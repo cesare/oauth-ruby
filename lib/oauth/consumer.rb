@@ -311,6 +311,9 @@ module OAuth
 
       http_object.use_ssl = (our_uri.scheme == 'https')
 
+      http_object.open_timeout = @options[:open_timeout] || 30
+      http_object.read_timeout = @options[:read_timeout] || 60
+
       if @options[:ca_file] || CA_FILE
         http_object.ca_file = @options[:ca_file] || CA_FILE
         http_object.verify_mode = OpenSSL::SSL::VERIFY_PEER
